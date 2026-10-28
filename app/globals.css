@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* Dark mode follows the data-theme attribute set on <html>, not only the OS setting. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/* ===== Theme tokens: edit these to restyle the whole site ===== */
+:root {
+  --brand: #d9441c;
+  --brand-dark: #b5330f;
+  --saffron: #f4a623;
+  --green: #1f6b4f;
+  --ink: #1d1612;
+  --ink-soft: #5c4f47;
+  --bg: #fbf6ef;
+  --bg-2: #f4ebdf;
+  --surface: #ffffff;
+  --line: #e9ddcd;
+  --dark: #1d1612; /* surfaces that stay dark in both themes */
+  --header: rgba(251, 246, 239, 0.9);
+  --green-text: #1f6b4f;
+  --tint-warn: #fff4e0;
+  --tint-red: #fff1ec;
+  --tint-green: #e8f3ee;
+  --disabled: #c9b8aa;
+  --shadow: 0 10px 30px rgba(60, 30, 10, 0.1);
+  --shadow-lg: 0 24px 60px rgba(60, 30, 10, 0.18);
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --brand: #e44d22;
+  --brand-dark: #f06a40;
+  --green: #2a8a63;
+  --ink: #f5ece2;
+  --ink-soft: #b9aa9c;
+  --bg: #15100d;
+  --bg-2: #241b16;
+  --surface: #1f1814;
+  --line: #3a2e27;
+  --dark: #0b0806;
+  --header: rgba(21, 16, 13, 0.86);
+  --green-text: #5cc79a;
+  --tint-warn: #33260f;
+  --tint-red: #3d1a0f;
+  --tint-green: #12291f;
+  --disabled: #4a3d35;
+  --shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 24px 60px rgba(0, 0, 0, 0.5);
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-brand: var(--brand);
+  --color-brand-dark: var(--brand-dark);
+  --color-saffron: var(--saffron);
+  --color-green: var(--green);
+  --color-ink: var(--ink);
+  --color-ink-soft: var(--ink-soft);
+  --color-bg: var(--bg);
+  --color-bg-2: var(--bg-2);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-dark: var(--dark);
+  --color-header: var(--header);
+  --color-green-text: var(--green-text);
+  --color-tint-warn: var(--tint-warn);
+  --color-tint-red: var(--tint-red);
+  --color-tint-green: var(--tint-green);
+  --color-disabled: var(--disabled);
+  --color-coal: #1d1612; /* fixed dark text, e.g. on saffron */
+
+  --font-sans: var(--font-jakarta), system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+
+  --shadow-soft: var(--shadow);
+  --shadow-lift: var(--shadow-lg);
+
+  --animate-float: float 7s ease-in-out infinite;
+  --animate-fade-up: fade-up 0.4s ease both;
+  --animate-bump: bump 0.4s ease;
+  --animate-fade: fade 0.2s ease;
+}
+
+@keyframes float { 50% { transform: translateY(-10px); } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(12px); } }
+@keyframes bump { 50% { transform: scale(1.35); } }
+@keyframes fade { from { opacity: 0; } }
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 84px;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased leading-relaxed;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  h1, h2 {
+    @apply font-display font-extrabold tracking-tight leading-[1.15];
+  }
+  h3, h4 {
+    @apply leading-tight;
+  }
+  :focus-visible {
+    outline: 3px solid var(--saffron);
+    outline-offset: 2px;
+    border-radius: 6px;
+  }
+  summary::-webkit-details-marker { display: none; }
+}
+
+@utility wrap {
+  width: min(1180px, 100% - 32px);
+  margin-inline: auto;
+}
+
+@utility section-y {
+  padding-block: clamp(3.5rem, 7vw, 6rem);
+}
+
+@utility no-scrollbar {
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  html { scroll-behavior: auto; }
+}
