@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Zaiqa Express | Fast Food & Pakistani Takeaway</title>
+  <meta name="description" content="Zaiqa Express: smash burgers, crispy chicken, biryani, karahi and BBQ, cooked fresh to order. Order online and collect from our takeaway counter.">
+  <meta name="theme-color" content="#d9441c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <script>
+    // Apply the saved (or system) theme before first paint to avoid a flash.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("zx-theme"); } catch (e) {}
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.setAttribute("data-theme", dark ? "dark" : "light");
+    })();
+  </script>
+</head>
+<body>
+
+  <!-- Takeaway notice -->
+  <div class="notice-bar" role="note">
+    <span class="notice-pill">Takeaway only</span>
+    <span>No dine-in seating. Order online, then collect your food hot from our counter.</span>
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a href="#top" class="brand" aria-label="Zaiqa Express home">
+        <span class="brand-mark" aria-hidden="true">Z</span>
+        <span class="brand-text">Zaiqa<span>Express</span></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Main">
+        <a href="#menu">Menu</a>
+        <a href="#how">How it works</a>
+        <a href="#pickup">Pickup &amp; hours</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode">
+          <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></g></svg>
+        </button>
+        <button class="cart-btn" id="cartOpenBtn" aria-label="Open your order">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M6 7h12l-1 13H7L6 7Zm3 0V5a3 3 0 0 1 6 0v2"/></svg>
+          <span class="cart-btn-label">Your order</span>
+          <span class="cart-count" id="cartCount">0</span>
+        </button>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="mainNav">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Fast food meets desi flavour</p>
+          <h1>Smash burgers to sizzling karahi, <em>ready when you are.</em></h1>
+          <p class="lead">Everything is cooked fresh to order in our kitchen. Pick your favourites online, choose a pickup time, and grab your food from the counter. No queue, no waiting around.</p>
+          <div class="hero-ctas">
+            <a href="#menu" class="btn btn-primary btn-lg">Order for pickup</a>
+            <a href="#how" class="btn btn-ghost btn-lg">How it works</a>
+          </div>
+          <ul class="hero-facts">
+            <li><strong>15–25 min</strong><span>Typical prep time</span></li>
+            <li><strong>Pay at pickup</strong><span>Cash or card</span></li>
+            <li><strong>Halal</strong><span>100% halal meat</span></li>
+          </ul>
+        </div>
+
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-plate hero-plate-main">
+            <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=900&q=80" alt="" data-fallback="biryani">
+          </div>
+          <div class="hero-plate hero-plate-small">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="" data-fallback="burger">
+          </div>
+          <div class="hero-badge">
+            <span class="hero-badge-icon">🛍️</span>
+            <span><strong>Order ahead</strong>Skip the wait at the counter</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how" id="how">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Takeaway made simple</p>
+          <h2>Three steps to a hot meal</h2>
+          <p>We're a takeaway kitchen with no seating area, so every order is packed to travel and ready to collect.</p>
+        </div>
+        <ol class="steps">
+          <li class="step">
+            <span class="step-num">1</span>
+            <h3>Browse &amp; build your order</h3>
+            <p>Burgers, broast, biryani, karahi, BBQ and more. Add what you like to your bag.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">2</span>
+            <h3>Pick a collection time</h3>
+            <p>Choose "as soon as possible" or a later slot. We start cooking so it's fresh when you arrive.</p>
+          </li>
+          <li class="step">
+            <span class="step-num">3</span>
+            <h3>Collect from the counter</h3>
+            <p>Give your order number at the counter, pay by cash or card, and take it home hot.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Menu -->
+    <section class="menu-section" id="menu">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Our menu</p>
+          <h2>What are you craving today?</h2>
+        </div>
+
+        <div class="menu-tools">
+          <div class="category-tabs" id="categoryTabs" role="tablist" aria-label="Menu categories"></div>
+          <label class="search">
+            <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input type="search" id="menuSearch" placeholder="Search the menu" aria-label="Search the menu">
+          </label>
+        </div>
+
+        <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+        <p class="menu-empty" id="menuEmpty" hidden>Nothing matches that search. Try "chicken" or "biryani".</p>
+      </div>
+    </section>
+
+    <!-- Deals band -->
+    <section class="deal-band">
+      <div class="container deal-inner">
+        <div>
+          <p class="eyebrow eyebrow-light">Family deal</p>
+          <h2>Biryani + Karahi + 4 Naan + 1.5L drink</h2>
+          <p>Feeds 4–5. Perfect for a night in.</p>
+        </div>
+        <div class="deal-cta">
+          <span class="deal-price">Rs 3,499</span>
+          <button class="btn btn-light btn-lg" data-add="family-deal">Add to order</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pickup info -->
+    <section class="pickup" id="pickup">
+      <div class="container pickup-grid">
+        <div class="pickup-info">
+          <p class="eyebrow">Collection point</p>
+          <h2>Where to pick up your order</h2>
+          <p class="pickup-note"><strong>Please note:</strong> we're a takeaway-only counter with no tables or seating. All orders are packed to go.</p>
+
+          <div class="info-cards">
+            <div class="info-card">
+              <h3>Address</h3>
+              <p>Shop 12, Main Boulevard<br>Gulberg III, Lahore</p>
+              <a href="https://maps.google.com/?q=Main+Boulevard+Gulberg+III+Lahore" target="_blank" rel="noopener">Get directions →</a>
+            </div>
+            <div class="info-card">
+              <h3>Opening hours</h3>
+              <ul class="hours">
+                <li><span>Mon – Thu</span><span>12:00 pm – 12:00 am</span></li>
+                <li><span>Fri</span><span>2:00 pm – 1:00 am</span></li>
+                <li><span>Sat – Sun</span><span>12:00 pm – 1:00 am</span></li>
+              </ul>
+              <p class="open-status" id="openStatus"></p>
+            </div>
+            <div class="info-card">
+              <h3>Questions about an order?</h3>
+              <p><a href="tel:+923001234567">0300 1234567</a></p>
+              <p class="muted">Call or WhatsApp us any time during opening hours.</p>
+            </div>
+          </div>
+        </div>
+        <div class="pickup-map">
+          <iframe title="Map showing Zaiqa Express location" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps?q=Main+Boulevard+Gulberg+III+Lahore&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews -->
+    <section class="reviews">
+      <div class="container">
+        <div class="section-head">
+          <p class="eyebrow">Loved locally</p>
+          <h2>What our regulars say</h2>
+        </div>
+        <div class="review-grid">
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>"Ordered on the way home from work and it was ready the minute I walked in. The chicken karahi is the real deal."</blockquote>
+            <figcaption>Ayesha K.</figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>"Best smash burger in the area, and the kids love the zinger. Ordering online saves so much time."</blockquote>
+            <figcaption>Usman R.</figcaption>
+          </figure>
+          <figure class="review">
+            <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+            <blockquote>"Family deal is huge value. Biryani was fragrant, naan was still warm when we got home."</blockquote>
+            <figcaption>Hamza &amp; Sana</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="faq" id="faq">
+      <div class="container faq-inner">
+        <div class="section-head section-head-left">
+          <p class="eyebrow">Good to know</p>
+          <h2>Frequently asked questions</h2>
+        </div>
+        <div class="faq-list">
+          <details>
+            <summary>Can I eat at the restaurant?</summary>
+            <p>Sorry, no. We're a takeaway-only kitchen and don't have a seating area. Every order is packed to take away.</p>
+          </details>
+          <details>
+            <summary>Do you deliver?</summary>
+            <p>We don't run our own delivery. Order here for collection and pick it up from our counter.</p>
+          </details>
+          <details>
+            <summary>How do I pay?</summary>
+            <p>You pay when you collect, by cash or card. There's nothing to pay online.</p>
+          </details>
+          <details>
+            <summary>How long will my order take?</summary>
+            <p>Most orders are ready in 15–25 minutes. Large or family orders can take a little longer at busy times. You can also schedule a later pickup slot.</p>
+          </details>
+          <details>
+            <summary>Is your food halal?</summary>
+            <p>Yes, all our meat is 100% halal.</p>
+          </details>
+          <details>
+            <summary>Can I change or cancel my order?</summary>
+            <p>Call us on 0300 1234567 as soon as possible with your order number and we'll do our best to help.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+      <div class="container final-cta-inner">
+        <h2>Hungry? Your order can be ready in 20 minutes.</h2>
+        <a href="#menu" class="btn btn-primary btn-lg">Start your order</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a href="#top" class="brand brand-footer">
+          <span class="brand-mark" aria-hidden="true">Z</span>
+          <span class="brand-text">Zaiqa<span>Express</span></span>
+        </a>
+        <p class="muted">Fast food &amp; Pakistani cuisine. Takeaway only.</p>
+      </div>
+      <div>
+        <h4>Visit</h4>
+        <p>Shop 12, Main Boulevard<br>Gulberg III, Lahore</p>
+      </div>
+      <div>
+        <h4>Contact</h4>
+        <p><a href="tel:+923001234567">0300 1234567</a></p>
+        <p><a href="https://wa.me/923001234567" target="_blank" rel="noopener">WhatsApp us</a></p>
+      </div>
+      <div>
+        <h4>Explore</h4>
+        <p><a href="#menu">Menu</a></p>
+        <p><a href="#pickup">Pickup &amp; hours</a></p>
+        <p><a href="#faq">FAQ</a></p>
+      </div>
+    </div>
+    <div class="container footer-bottom">
+      <span>© <span id="year"></span> Zaiqa Express. All rights reserved.</span>
+      <span>Prices include tax.</span>
+    </div>
+  </footer>
+
+  <!-- Mobile sticky order bar -->
+  <button class="mobile-cart-bar" id="mobileCartBar" hidden>
+    <span id="mobileCartCount">0 items</span>
+    <strong>View order · <span id="mobileCartTotal">Rs 0</span></strong>
+  </button>
+
+  <!-- Cart drawer -->
+  <div class="drawer-overlay" id="drawerOverlay" hidden></div>
+  <aside class="drawer" id="cartDrawer" aria-label="Your order" aria-hidden="true">
+    <div class="drawer-head">
+      <div>
+        <h2 id="drawerTitle">Your order</h2>
+        <p class="drawer-sub">Takeaway · collect from counter</p>
+      </div>
+      <button class="icon-btn" id="cartCloseBtn" aria-label="Close">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+
+    <!-- Step 1: cart -->
+    <div class="drawer-body" id="cartView">
+      <ul class="cart-list" id="cartList"></ul>
+      <div class="cart-empty" id="cartEmpty">
+        <span class="cart-empty-icon" aria-hidden="true">🍽️</span>
+        <p><strong>Your bag is empty</strong></p>
+        <p class="muted">Add something tasty from the menu to get started.</p>
+        <button class="btn btn-primary" id="browseMenuBtn">Browse the menu</button>
+      </div>
+    </div>
+
+    <!-- Step 2: checkout -->
+    <form class="drawer-body checkout" id="checkoutView" hidden novalidate>
+      <button type="button" class="back-link" id="backToCart">← Back to order</button>
+      <h3>Pickup details</h3>
+      <label class="field">
+        <span>Full name</span>
+        <input type="text" name="name" autocomplete="name" required>
+        <small class="error-msg">Please enter your name.</small>
+      </label>
+      <label class="field">
+        <span>Mobile number</span>
+        <input type="tel" name="phone" autocomplete="tel" placeholder="03XX XXXXXXX" required pattern="^(\+92|0)3\d{2}[\s-]?\d{7}$">
+        <small class="error-msg">Enter a valid mobile number, e.g. 0300 1234567.</small>
+      </label>
+
+      <fieldset class="field">
+        <legend>Collection time</legend>
+        <div class="seg">
+          <label><input type="radio" name="when" value="asap" checked><span>As soon as possible</span></label>
+          <label><input type="radio" name="when" value="later"><span>Schedule for later</span></label>
+        </div>
+        <select name="slot" id="slotSelect" hidden aria-label="Choose pickup time"></select>
+      </fieldset>
+
+      <label class="field">
+        <span>Notes for the kitchen <em>(optional)</em></span>
+        <textarea name="notes" rows="2" placeholder="E.g. less spicy, no onions"></textarea>
+      </label>
+
+      <div class="pay-note">
+        <strong>Pay at collection</strong>
+        <span>Cash or card at the counter. Nothing to pay online.</span>
+      </div>
+    </form>
+
+    <!-- Step 3: confirmation -->
+    <div class="drawer-body confirm" id="confirmView" hidden>
+      <div class="confirm-check" aria-hidden="true">✓</div>
+      <h3>Order received!</h3>
+      <p class="muted">Show this number at the counter when you collect.</p>
+      <div class="order-number" id="orderNumber">#0000</div>
+      <div class="confirm-details" id="confirmDetails"></div>
+      <a class="btn btn-whatsapp" id="whatsappBtn" target="_blank" rel="noopener">Send order on WhatsApp</a>
+      <p class="muted small">Sending it on WhatsApp gets your order straight to our kitchen.</p>
+      <button class="btn btn-ghost" id="newOrderBtn">Start a new order</button>
+    </div>
+
+    <div class="drawer-foot" id="drawerFoot">
+      <div class="totals">
+        <div><span>Subtotal</span><span id="subtotal">Rs 0</span></div>
+        <div class="total-row"><span>Total</span><span id="total">Rs 0</span></div>
+      </div>
+      <button class="btn btn-primary btn-block btn-lg" id="primaryAction" disabled>Continue to pickup details</button>
+    </div>
+  </aside>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
